@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body style="background-color: #808080;"> <!-- Set background color to blue -->
+
+    <h1 style="font-family: Georgia, serif; color: white;">Smart Chess</h1>
+
+    <img id="displayedImage" alt="Image" style="max-width: 40%; height: auto; margin: 0 auto; margin-left: 150px;">
+
+    <script>
+        var continueDisplay = {{ continue_display | lower }};
+        var imageElement = document.getElementById("displayedImage");
+
+        function updateImage() {
+            if (continueDisplay) {
+                imageElement.src = "/static/chesspos.png?" + new Date().getTime();  // Add timestamp to force image reload
+            }
+        }
+
+        setInterval(updateImage, 1000);  // Update image every second
+    </script>
+</body>
+</html>
